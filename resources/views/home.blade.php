@@ -5,7 +5,37 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('String Sort') }}</div>
+                <div class="card-header">{{ __('Web Client') }}</div>
+                   <!-- Congrats message -->
+                    @if (session('info'))
+                        <div class="alert alert-success alert-dismissable">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button"><i class="fa fa-close"></i>
+                        </button>
+                        <h4><i class="icon fa fa-check"></i>
+                            {{ session('info') }}
+                         </h4>   
+                        </div>
+                    @endif
+
+                    <!-- Error message -->
+                    @if (session('message'))
+                        <div class="alert alert-danger alert-dismissable">
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button"><i class="fa fa-close"></i></button> <h4><i class="icon fa fa-check"></i>
+                            {{ session('message') }}
+                         </h4>
+                        </div>
+                    @endif
+
+
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                 <div class="card-body">
                     <p> Given a string, that contains special character together with alphabets (‘a’ to ‘z’ and ‘A’ to ‘Z’), reverse the string in a way that special characters are not affected.</p>

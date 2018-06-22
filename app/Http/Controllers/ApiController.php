@@ -28,7 +28,9 @@ class ApiController extends Controller
     		$data = json_encode(array('string' => $request->String));
             $url = $this->stringSort_Url;
 
-            $this->sendRequest($data, $url);   
+            $result = $this->sendRequest($data, $url); 
+
+            return back()->with('info', 'Response '. $result);   
     		
     	} catch (Exception $e) {
     		Log::error($e);
@@ -44,7 +46,9 @@ class ApiController extends Controller
     		$data = json_encode(array('index' => $request->index));
          	$url = $this->pascalSort_Url;
     
-        	$this->sendRequest($data, $url); 
+        	$result = $this->sendRequest($data, $url); 
+
+        	return back()->with('info', 'Response '. $result);   
 
     	} catch (Exception $e) {
     		Log::error($e);
@@ -60,7 +64,9 @@ class ApiController extends Controller
     		$data = json_encode(array('string' => $request->String));
         	$url = $this->isvalidString_Url;
     
-        	$this->sendRequest($data, $url);    
+        	$result = $this->sendRequest($data, $url); 
+
+        	return back()->with('info', 'Response '. $result);   
 
     	} catch (Exception $e) {
     	
@@ -88,18 +94,22 @@ class ApiController extends Controller
 
 			 
 			// Submit the POST request
-			echo $result = curl_exec($ch);
+		    $result = curl_exec($ch);
 			$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
 			Log::info("Request " . $data . " sent " . $url . " Response " . $result . " Response Code " . $httpcode);
-			 
+
 			// Close cURL session handle
 			curl_close($ch);
+
+			return $result;
+			 			
 
     	  } 
     	catch (Exception $e) 
     	  {
     		 Log::error($e);
+    		 return back()->with('message', 'Ooops! Something Went Wrong!');
     	  }
     }
 }
