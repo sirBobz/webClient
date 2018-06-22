@@ -23,28 +23,50 @@ class ApiController extends Controller
 
     public function stringSort(Request $request)
     {
-        $data = json_encode(array('string' => $request->string));
-        $url = $this->stringSort_Url;
+    	try 
+    	{
+    		$data = json_encode(array('string' => $request->String));
+            $url = $this->stringSort_Url;
 
-        $this->sendRequest($data, $url);     
+            $this->sendRequest($data, $url);   
+    		
+    	} catch (Exception $e) {
+    		Log::error($e);
+    	}
+          
     }
 
 
     public function pascalSort(Request $request)
     {
-    	$data = json_encode(array('index' => $request->index));
-    	$url = $this->pascalSort_Url;
+    	try 
+    	{
+    		$data = json_encode(array('index' => $request->index));
+         	$url = $this->pascalSort_Url;
     
-    	$this->sendRequest($data, $url);    
+        	$this->sendRequest($data, $url); 
+
+    	} catch (Exception $e) {
+    		Log::error($e);
+    	}
+    	   
     }
 
 
     public function isvalidString(Request $request)
     {
-    	$data = json_encode(array('string' => $request->string));
-    	$url = $this->isvalidString_Url;
+    	try 
+    	{
+    		$data = json_encode(array('string' => $request->String));
+        	$url = $this->isvalidString_Url;
     
-    	$this->sendRequest($data, $url);    
+        	$this->sendRequest($data, $url);    
+
+    	} catch (Exception $e) {
+    	
+    	   Log::error($e);	
+    	}
+    	
     }
 
 
@@ -63,9 +85,12 @@ class ApiController extends Controller
 			 
 			// Set HTTP Header for POST request 
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+
 			 
 			// Submit the POST request
 			echo $result = curl_exec($ch);
+
+			Log::info("Request " . $data . " sent " . $url . " Response " . $result);
 			 
 			// Close cURL session handle
 			curl_close($ch);

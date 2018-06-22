@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <p> Given a string, that contains special character together with alphabets (‘a’ to ‘z’ and ‘A’ to ‘Z’), reverse the string in a way that special characters are not affected.</p>
-                    <form method="POST" action="{{ url('login') }}" aria-label="{{ __('/stringSort-Url') }}">
+                    <form method="POST" action="{{ url('stringSort-Url') }}" aria-label="{{ __('/stringSort-Url') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -40,7 +40,7 @@
                     <br>
                     <br>
                     <p> Given an index k, return the kth row of the Pascal's triangle.</p>
-                     <form method="POST" action="{{ url('login') }}" aria-label="{{ __('/pascalSort-Url') }}">
+                     <form method="POST" action="{{ url('pascalSort-Url') }}" aria-label="{{ __('/pascalSort-Url') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -71,7 +71,7 @@
                     <br>
                     <br>
                     <p>Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.</p>
-                     <form method="POST" action="{{ url('login') }}" aria-label="{{ __('/isvalidString-Url') }}">
+                     <form method="POST" action="{{ url('isvalidString-Url') }}" aria-label="{{ __('/isvalidString-Url') }}">
                         @csrf
 
                         <div class="form-group row">
