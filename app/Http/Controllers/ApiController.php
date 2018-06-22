@@ -24,6 +24,7 @@ class ApiController extends Controller
     public function stringSort(Request $request)
     {
         $data = json_encode(array('string' => $request->string));
+        $url = $this->stringSort_Url;
 
         $this->sendRequest($data, $url);     
     }
@@ -32,6 +33,7 @@ class ApiController extends Controller
     public function pascalSort(Request $request)
     {
     	$data = json_encode(array('index' => $request->index));
+    	$url = $this->pascalSort_Url;
     
     	$this->sendRequest($data, $url);    
     }
@@ -40,6 +42,7 @@ class ApiController extends Controller
     public function isvalidString(Request $request)
     {
     	$data = json_encode(array('string' => $request->string));
+    	$url = $this->isvalidString_Url;
     
     	$this->sendRequest($data, $url);    
     }
