@@ -47,7 +47,7 @@
                             <label for="index" class="col-sm-4 col-form-label text-md-right">{{ __('Index') }}</label>
 
                             <div class="col-md-6">
-                                <input id="index" type="text" class="form-control{{ $errors->has('index') ? ' is-invalid' : '' }}" name="index" value="{{ old('number') }}" placeholder="Enter the index" required autofocus>
+                                <input id="index" type="number" class="form-control{{ $errors->has('index') ? ' is-invalid' : '' }}" name="index" value="{{ old('index') }}" placeholder="Enter the index" required autofocus>
 
                                 @if ($errors->has('index'))
                                     <span class="invalid-feedback" role="alert">

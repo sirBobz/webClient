@@ -89,8 +89,9 @@ class ApiController extends Controller
 			 
 			// Submit the POST request
 			echo $result = curl_exec($ch);
+			$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-			Log::info("Request " . $data . " sent " . $url . " Response " . $result);
+			Log::info("Request " . $data . " sent " . $url . " Response " . $result . " Response Code " . $httpcode);
 			 
 			// Close cURL session handle
 			curl_close($ch);
